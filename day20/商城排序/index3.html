@@ -136,6 +136,9 @@
 
 </html>
 <script>
+    
+</script>
+<script>
     var data = null;
     var str = ``;
     var lists = document.getElementById("lists");
@@ -208,18 +211,22 @@
               arrowsAry[1].classList.add("current");
             }
             var sortFlag = this.getAttribute("sortFlag");
-            // 时间排序
-            if (sortFlag == "time") {
-                // debugger;
-                lis.sort(function (a, b) {
+            // 如果有"-"，就替换,如果没有，就"不替换"
+            lis.sort(function (a, b) {
                     return (a.getAttribute(sortFlag).replace(/-/g, "") - b.getAttribute(sortFlag).replace(/-/g, "")) * that.flag;
-                });
-            } else {
-                // 价钱
-                lis.sort(function (a, b) {
-                    return (a.getAttribute(sortFlag) - b.getAttribute(sortFlag)) * that.flag;
-                })
-            }
+            });
+            // 时间排序
+            //if (sortFlag == "time") {
+                // debugger;
+                // lis.sort(function (a, b) {
+                //     return (a.getAttribute(sortFlag).replace(/-/g, "") - b.getAttribute(sortFlag).replace(/-/g, "")) * that.flag;
+                // });
+            // } //else {
+            //     // 价钱
+            //     lis.sort(function (a, b) {
+            //         return (a.getAttribute(sortFlag) - b.getAttribute(sortFlag)) * that.flag;
+            //     })
+            // }
             for (var i = 0; i < lis.length; i++) {
                 frg.appendChild(lis[i]);
             }
